@@ -27,10 +27,10 @@ for (var j = 0; j < npmconfigs.length; ++j) {
 
 var rc = module.exports = require('rc')('prebuild', {
   target: process.version,
-  arch: process.arch,
+  arch: process.env.npm_config_arch || process.arch,
   libc: process.env.LIBC,
-  platform: process.platform,
-  abi: process.versions.modules,
+  platform: process.env.npm_config_platform || process.platform,
+  abi: process.env.npm_config_abi || process.versions.modules,
   all: false,
   force: false,
   debug: false,
